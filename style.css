@@ -1,0 +1,477 @@
+body {
+    background: #121212;
+    color: #f5f5f5;
+    font-family: Arial, sans-serif;
+}
+
+.index-body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', Arial, sans-serif;
+    background: url("background.jpg") no-repeat center center/cover;
+    background-attachment: fixed;
+    min-height: 100vh;
+    position: relative;
+    color: #ffffff;
+}
+
+.index-body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 0;
+}
+
+.index-body>* {
+    position: relative;
+    z-index: 1;
+}
+
+.index-body .title {
+    color: #ffffff !important;
+}
+
+.index-body .card {
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+}
+
+.app-container {
+    background: #ffffff;
+    width: 100%;
+    max-width: 1200px;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+}
+
+.hero-banner img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    display: block;
+}
+
+.main-layout {
+    display: flex;
+    flex: 1;
+    background: #FAFAFA;
+}
+
+.sidebar {
+    background: rgba(28, 29, 33, 0.85);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 30px 20px;
+    border-radius: 12px;
+    min-height: 600px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar ul li {
+    margin-bottom: 12px;
+}
+
+.sidebar ul li a {
+    display: flex;
+    align-items: center;
+    color: #c5c5c7;
+    text-decoration: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-weight: 500;
+    font-size: 15px;
+    transition: all 0.3s ease;
+}
+
+.sidebar ul li a i {
+    font-size: 18px;
+    margin-right: 15px;
+    background: #2D2E33;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+}
+
+.sidebar ul li.active a,
+.sidebar ul li a:hover {
+    background: #4A3131;
+    color: #ffffff;
+}
+
+.sidebar ul li.active a i {
+    background: transparent;
+}
+
+.main-content {
+    flex: 1;
+    padding: 40px;
+}
+
+.title {
+    font-size: 32px;
+    font-weight: 700;
+    color: #202124;
+    margin-bottom: 10px;
+}
+
+.title-underline {
+    width: 60px;
+    height: 4px;
+    background: #7B3F3F;
+    border-radius: 2px;
+    margin-bottom: 30px;
+}
+
+.custom-card {
+    background: #ffffff;
+    border: 1px solid #EAEAEA;
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+}
+
+.card-header-custom {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.icon-box {
+    width: 42px;
+    height: 42px;
+    background: #5E3A3A;
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    font-size: 20px;
+}
+
+.card-header-custom h3 {
+    font-size: 20px;
+    font-weight: 600;
+    color: #202124;
+}
+
+.custom-table {
+    margin-bottom: 0;
+}
+
+.custom-table th {
+    color: #5F6368;
+    font-weight: 600;
+    font-size: 14px;
+    border-bottom: 1px solid #EAEAEA;
+    padding-bottom: 15px;
+    border-top: none;
+}
+
+.custom-table td {
+    padding: 20px 10px;
+    vertical-align: middle;
+    color: #3C4043;
+    font-size: 15px;
+    border-bottom: 1px solid #F1F3F4;
+}
+
+.car-logo {
+    width: 50px;
+    height: 50px;
+    background: #F8F9FA;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 8px;
+}
+
+.car-logo img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+.status-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.status-badge i {
+    margin-right: 6px;
+    font-size: 14px;
+}
+
+.status-badge.upcoming {
+    background: #FCE8E8;
+    color: #D93025;
+}
+
+.status-badge.uptodate {
+    background: #E6F4EA;
+    color: #1E8E3E;
+}
+
+.status-badge.overdue {
+    background: #FCE8E8;
+    color: #D93025;
+}
+
+
+.vehicle-banner img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    filter: grayscale(100%);
+}
+
+.vehicle-title {
+    font-size: 50px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.view-tabs span {
+    margin-right: 20px;
+    color: #999;
+    cursor: pointer;
+}
+
+.active-tab {
+    font-weight: bold;
+    color: white;
+}
+
+.carousel-image {
+    height: 600px;
+    object-fit: contain;
+    mix-blend-mode: multiply;
+}
+
+.carousel-title {
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+
+    display: inline-block;
+
+    padding: 10px 20px;
+
+    border-radius: 8px;
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+    width: 15%;
+    opacity: 1;
+}
+
+.carousel-btn {
+    background: #777;
+
+    width: 70px;
+    height: 70px;
+
+    border-radius: 50%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    opacity: 0.9;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    width: 35px;
+    height: 35px;
+}
+
+.add-card {
+    height: 245px;
+    border: 2px dashed #555;
+    border-radius: 12px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    color: #888;
+    background: #1e1e1e;
+
+    transition: 0.3s;
+}
+
+.add-card:hover {
+    background: #2a2a2a;
+    cursor: pointer;
+}
+
+.service-banner img {
+    width: 100%;
+    height: 250px;
+
+    object-fit: cover;
+    filter: grayscale(100%);
+}
+
+.service-title {
+    font-size: 55px;
+    font-weight: bold;
+
+    margin-bottom: 20px;
+}
+
+
+.service-tabs {
+    margin-bottom: 25px;
+}
+
+.service-tabs span {
+    margin-right: 25px;
+
+    color: #777;
+
+    cursor: pointer;
+
+    font-size: 18px;
+}
+
+.active-tab {
+    color: black !important;
+    font-weight: bold;
+}
+
+.table-controls {
+    display: flex;
+    justify-content: flex-end;
+
+    margin-bottom: 15px;
+}
+
+
+.new-btn {
+    background: #2383e2;
+    color: white;
+
+    border: none;
+
+    padding: 10px 25px;
+
+    border-radius: 8px;
+
+    font-weight: bold;
+
+    transition: 0.3s;
+}
+
+.new-btn:hover {
+    background: #156fd1;
+}
+
+.service-table {
+    background: white;
+}
+
+.service-table th {
+    background: #f8f8f8;
+    color: #666;
+}
+
+.service-table td {
+    vertical-align: middle;
+}
+
+.badge {
+    padding: 8px 14px;
+
+    border-radius: 8px;
+
+    font-size: 14px;
+}
+
+
+.inspection {
+    background: #d9ecff;
+    color: #2b6cb0;
+}
+
+.maintenance {
+    background: #dff5df;
+    color: #2f855a;
+}
+
+.repair {
+    background: #ffe1e1;
+    color: #c53030;
+}
+
+.fuel-regular {
+    background: #e2f0fd;
+    color: #1a73e8;
+}
+
+.fuel-premium {
+    background: #f3e8fd;
+    color: #9333ea;
+}
+
+/* Responsive styles*/
+@media (max-width: 767.98px) {
+    .sidebar {
+        min-height: auto !important;
+        padding: 15px 10px !important;
+        margin-bottom: 20px;
+    }
+
+    .sidebar ul {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    .sidebar ul li {
+        margin-bottom: 0 !important;
+    }
+
+    .sidebar ul li a {
+        padding: 8px 12px !important;
+        font-size: 13px !important;
+    }
+
+    .sidebar ul li a i {
+        font-size: 14px !important;
+        margin-right: 8px !important;
+        width: 28px !important;
+        height: 28px !important;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .card {
+        padding: 15px !important;
+    }
+}

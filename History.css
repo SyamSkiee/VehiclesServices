@@ -1,0 +1,69 @@
+.custom-new-btn {
+    background: #7B3F3F;
+    border: none;
+    width: auto;
+}
+
+.expense-card {
+    padding: 1.5rem;
+    border-radius: 1rem;
+    color: #000;
+    background: white;
+    border: 1px solid #EAEAEA;
+    box-shadow: 0 .125rem .25rem rgba(0, 0, 0, .075);
+}
+
+.expense-title {
+    color: #202124;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: .25rem;
+}
+
+.expense-label {
+    display: block;
+    letter-spacing: .5px;
+    font-weight: 500;
+}
+
+.expense-value {
+    font-size: 2rem;
+    font-weight: bold;
+    color: green;
+    font-family: 'Inter', sans-serif;
+}
+
+.chart-wrapper {
+    position: relative;
+    max-width: 300px;
+    margin: 0 auto;
+}
+
+/* Cost Trend Chart Upgrade */
+.icon-box-blue {
+    width: 36px;
+    height: 36px;
+    background-color: rgba(13, 110, 253, 0.1);
+    color: #0d6efd;
+    border-radius: 8px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+}
+
+.dashboard-card-title {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #212529 !important;
+    margin-bottom: 0;
+}
+
+.cost-chart-wrapper {
+    position: relative;
+    width: 100%;
+    height: 250px;
+    margin-top: 15px;
+}

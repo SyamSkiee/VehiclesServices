@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- META SETTINGS -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Car Maintenance Tracker</title>
+
+
+    <!-- STYLESHEETS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="History.css">
+
+    <!-- CHART JS -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body class="index-body">
+
+    <!-- MAIN CONTAINER -->
+    <div class="container-fluid mt-5">
+        <div class="row">
+
+            <!-- SIDEBAR -->
+            <div class="col-md-2 sidebar">
+                <ul>
+                    <li>
+                        <a href="dashboard.html" class="text-decoration-none text-reset d-block">Dashboard</a>
+                    </li>
+                    <li>
+                        <a href="CarList.html" class="text-decoration-none text-reset d-block">Vehicles</a>
+                    </li>
+                    <li class="active">
+                        <a href="History.html" class="text-decoration-none text-reset d-block">History</a>
+                    </li>
+                    <li>
+                        <a href="booking.html" class="text-decoration-none text-reset d-block">Bookings</a>
+                    </li>
+                    <li>
+                        <a href="index.html" class="text-decoration-none text-reset d-block">LogOut</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- SIDEBAR -->
+
+            <!-- MAIN CONTENT -->
+            <div class="col-md-10">
+
+                <!-- PAGE TITLE -->
+                <h1 class="title">CAR MAINTENANCE TRACKER</h1>
+
+                <!-- ROW 1: TABLE AND EXPENSE CHART -->
+                <div class="row g-4 mt-2">
+
+                    <!-- LEFT COLUMN: SERVICE HISTORY TABLE CARD -->
+                    <div class="col-lg-7">
+                        <div class="card p-4 h-100">
+                            <div class="mb-3">
+                                <h3 class="mb-1 text-dark fw-bold" style="font-size: 1.25rem;">Service History</h3>
+                                <p class="text-muted small mb-0">Track Service Purchases</p>
+                            </div>
+
+                            <div class="service-tabs mt-2 mb-4">
+                                <span class="active-tab">▦ All Services</span>
+                            </div>
+
+                            <div class="table-responsive">
+                                <table class="table custom-table mt-2">
+                                    <thead>
+                                        <tr>
+                                            <th>Vehicle</th>
+                                            <th>Date</th>
+                                            <th>Service Type</th>
+                                            <th>Total Cost</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td class="fw-semibold">Nissan</td>
+                                            <td>May 28, 2026</td>
+                                            <td>Oil Change</td>
+                                            <td class="fw-semibold text-success">RM 46.15</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="fw-semibold">Toyota</td>
+                                            <td>May 22, 2026</td>
+                                            <td>Bracking System</td>
+                                            <td class="fw-semibold text-success">RM 79.20</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="fw-semibold">Dodge</td>
+                                            <td>May 15, 2026</td>
+                                            <td>Fluid Checker</td>
+                                            <td class="fw-semibold text-success">RM 93.50</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- RIGHT COLUMN: TOTAL SPENT PIE CHART CARD -->
+                    <div class="col-lg-5">
+                        <div class="card p-4 h-100">
+                            <div class="mb-3 text-center">
+                                <h3 class="mb-1 text-dark fw-bold" style="font-size: 1.25rem;">Total Amount Spent</h3>
+                                <p class="text-muted small mb-0">Expense Distribution by Vehicle</p>
+                            </div>
+
+                            <div class="text-center mb-4 mt-3">
+                                <span class="expense-label text-muted small fw-semibold">TOTAL AMOUNT SPENT</span>
+                                <span class="expense-value text-success fw-bold d-block mt-1"
+                                    style="font-size: 2.25rem;">RM 261.66</span>
+                            </div>
+
+                            <div class="chart-wrapper w-100"
+                                style="position: relative; height: 180px; display: flex; align-items: center; justify-content: center;">
+                                <canvas id="expenseChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- LINE CHART CARD -->
+                <div class="row g-4 mt-2">
+                    <div class="col-12">
+                        <div class="card p-4">
+                            <div class="d-flex align-items-center gap-2 mb-3">
+                                <div class="icon-box-blue">
+                                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor"
+                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline>
+                                        <polyline points="17 6 23 6 23 12"></polyline>
+                                    </svg>
+                                </div>
+                                <h3 class="dashboard-card-title">Maintenance Cost by Vehicle</h3>
+                            </div>
+                            <div class="cost-chart-wrapper" style="position: relative; height: 260px;">
+                                <canvas id="costTrendChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CHART -->
+                <script>
+                    document.addEventListener("DOMContentLoaded", function () {
+
+                        const ctx = document.getElementById('expenseChart').getContext('2d');
+
+                        new Chart(ctx, {
+                            type: 'pie',
+                            data: {
+                                labels: ['Nissan', 'Toyota', 'Dodge'],
+                                datasets: [{
+                                    data: [88.96, 79.20, 93.50],
+                                    backgroundColor: [
+                                        'rgba(26,115,232,0.85)',
+                                        'rgba(147,51,234,0.85)',
+                                        'rgba(123,63,63,0.85)'
+                                    ],
+                                    borderColor: [
+                                        '#1a73e8',
+                                        '#9333ea',
+                                        '#7B3F3F'
+                                    ],
+                                    borderWidth: 5.0
+                                }]
+                            },
+                            options: {
+                                responsive: true,
+                                maintainAspectRatio: false
+                            }
+                        });
+
+                        // ---  CHART LINE ---
+                        const costCtx = document.getElementById('costTrendChart').getContext('2d');
+
+                        // background
+                        const costGradient = costCtx.createLinearGradient(0, 0, 0, 200);
+                        costGradient.addColorStop(0, 'rgba(13, 110, 253, 0.25)');
+                        costGradient.addColorStop(1, 'rgba(13, 110, 253, 0.00)');
+
+                        new Chart(costCtx, {
+                            type: 'line',
+                            data: {
+                                labels: ['Nissan', 'Toyota', 'Dodge'],
+                                datasets: [{
+                                    data: [88.96, 79.20, 93.50],
+                                    borderColor: '#0d6efd',
+                                    borderWidth: 3,
+                                    pointBackgroundColor: '#0d6efd',
+                                    pointBorderColor: '#ffffff',
+                                    pointBorderWidth: 2,
+                                    pointRadius: 6,
+                                    pointHoverRadius: 8,
+                                    fill: true,
+                                    backgroundColor: costGradient,
+                                    tension: 0.35
+                                }]
+                            },
+                            options: {
+                                responsive: true,
+                                maintainAspectRatio: false,
+                                plugins: {
+                                    legend: {
+                                        display: false
+                                    },
+                                    tooltip: {
+                                        enabled: true
+                                    }
+                                },
+                                scales: {
+                                    y: {
+                                        beginAtZero: true,
+                                        min: 0,
+                                        max: 120,
+                                        title: {
+                                            display: true,
+                                            text: 'Cost (RM)',
+                                            color: '#495057',
+                                            font: {
+                                                family: "'Inter', sans-serif",
+                                                weight: 'bold',
+                                                size: 12
+                                            }
+                                        },
+                                        grid: {
+                                            color: 'rgba(0, 0, 0, 0.05)',
+                                            drawTicks: false
+                                        },
+                                        ticks: {
+                                            stepSize: 20,
+                                            color: '#6c757d',
+                                            font: {
+                                                family: "'Inter', sans-serif"
+                                            }
+                                        }
+                                    },
+                                    x: {
+                                        grid: {
+                                            display: false
+                                        },
+                                        ticks: {
+                                            color: '#6c757d',
+                                            font: {
+                                                family: "'Inter', sans-serif"
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            plugins: [{
+                                id: 'lineLabels',
+                                afterDatasetsDraw(chart) {
+                                    const { ctx, data } = chart;
+                                    ctx.save();
+                                    ctx.font = 'bold 12px Inter, sans-serif';
+                                    ctx.fillStyle = '#212529';
+                                    ctx.textAlign = 'center';
+                                    ctx.textBaseline = 'bottom';
+
+                                    chart.getDatasetMeta(0).data.forEach((point, index) => {
+                                        const value = data.datasets[0].data[index];
+                                        ctx.fillText('RM' + value, point.x, point.y - 8);
+                                    });
+                                    ctx.restore();
+                                }
+                            }]
+                        });
+
+                    });
+                </script>
+
+            </div>
+
+        </div>
+    </div>
+
+    <!-- BOOTSTRAP JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- FOOTER -->
+    <footer class="site-footer mt-5">
+        <div class="container-fluid">
+
+            <hr class="footer-line">
+
+            <div class="text-center footer-bottom">
+                © 2026 Car Maintenance Tracker. All rights reserved.
+            </div>
+
+        </div>
+    </footer>
+
+</body>
+
+</html>
